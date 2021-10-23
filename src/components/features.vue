@@ -23,6 +23,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  max-width:1400px;
 }
 .button-group-1{
   padding-top:40px;

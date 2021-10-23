@@ -50,7 +50,7 @@
             }
         }
         li.active a, li a:hover, li a:active {
-            color: $primary !important;
+            border-bottom:3px solid #EE4F3F;
         }
     }
     .navbar-toggles {
@@ -82,7 +82,6 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     background-color: transparent;
-    border-color: $primary;
 }
 
 .menu-toggle {
@@ -141,6 +140,9 @@
             border: 1px solid transparent;
             outline: 0;
         }
+        .fav-title{
+            color:black;
+        }
         .navbar-nav {
             margin-top: 0px;
             li {
@@ -148,12 +150,11 @@
                     color: darken($muted, 6%) !important;
                 }
             }
-            li.active a, li a:hover, li a:active {
-                color: $primary !important;
-            }
         }
     }
-    
+    .switch-language{
+        display:none;
+    }
     .logo {
         .logo-dark {
             display: inline-block !important;

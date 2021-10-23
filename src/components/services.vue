@@ -1,6 +1,7 @@
 <style>
 .col-lg-6 {
   padding-left:0px;
+  padding-right:0px;
 }
 .pad-text{
   padding-left:86px;
@@ -20,7 +21,7 @@
     <div class="container-fluid">
       <div class="row align-items-center justify-content-center">
         <div class="col-lg-6 col-md-10">
-          <div class="mt-5 mt-lg-0">
+          <div class="mt-lg-0">
             <img
               src="../assets/images/images/section2_flat.png"
               class="image-fulid"

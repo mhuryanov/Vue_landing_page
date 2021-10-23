@@ -70,6 +70,7 @@ export default {
   height: 81px;
   border-radius: 16px;
 }
+
 </style>
 <template>
   <!-- Contact Us Start -->
@@ -100,7 +101,7 @@ export default {
           <input class="contact-input" placeholder="PHONE NUMBERS" />
         </div>
         <div class="row col-lg-12 justify-content-center">
-          <a class="contact-query-text">What best describes your needs?</a>
+          <span class="contact-query-text">What best describes your needs?</span>
         </div>
         <div class="row col-lg-12 justify-content-center mt-5">
           <div class="form-check">

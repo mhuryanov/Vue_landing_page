@@ -42,7 +42,7 @@ export default {
       <div class="container-fulid">
         <div class="row footer-row">
           <div class="col-lg-2">
-            <img src="../assets/images/images/Vector Smart Object.png" class="footer-image"/>
+            <img src="../assets/images/images/footer-icon.png" class="footer-image"/>
           </div>
           <div class="col-lg-8">
             <div class="text-center">

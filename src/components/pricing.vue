@@ -10,13 +10,55 @@
   width: 100%;
   height: auto;
 }
+.slide-react {
+  width: 100%;
+  height: 700px;
+  background-repeat: round;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.slider {
+  height: 420px;
+}
+.feedback-container {
+  margin: 100px 100px 100px 100px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 1px 10px 10px 1px rgba(0, 0, 0, 0.3);
+}
+.element-slider {
+  text-align:center;
+}
 </style>
 <script>
 import queryBoxBlue from "./Elements/query_blue_box.vue";
-  import VueSlickCarousel from 'vue-slick-carousel'
-    import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+import Flickity from "vue-flickity";
+import Slider from "vue-plain-slider";
 export default {
-  components: { queryBoxBlue,VueSlickCarousel  },
+  components: { queryBoxBlue, VueSlickCarousel, Flickity, Slider },
+  data() {
+    return {
+      flickityOptions: {
+        initialIndex: 3,
+        prevNextButtons: true,
+        pageDots: true,
+        wrapAround: true,
+        freeScroll: true,
+        // any options from Flickity can be used
+      },
+    };
+  },
+  methods: {
+    onSlideChangeStart(currentPage, el) {
+      console.log("onSlideChangeStart", currentPage, el);
+    },
+    onSlideChangeEnd(currentPage, el) {
+      console.log("onSlideChangeEnd", currentPage, el);
+    },
+  },
 };
 </script>
 <template>
@@ -66,43 +108,40 @@ export default {
         </div>
       </div>
     </div>
-                    <div class="container">
-                    <div class="ts-title">
-                        <h2>Testimonials</h2>
-                    </div>
-                    <!--end ts-title-->
-                    <div class="row">
-                        <div class="col-md-8 offset-md-2">
-                            <div class="owl-carousel" data-owl-dots="1" data-owl-loop="1" data-animate="ts-fadeInUp">
-                                <div class="slide mb-5">
-                                    <p class="ts-h5">
-                                        In id nulla magna. Nullam posuere fermentum mattis. Nunc id dui at sapien faucibus
-                                        fermentum ut vel diam. Nullam tempus, nunc id efficitur sagittis
-                                    </p>
-                                    <div class="ts-circle__lg mb-3" data-bg-image="assets/img/person.jpg"></div>
-                                    <h5>Jane Doe</h5>
-                                    <h6 class="ts-opacity__40">Bristol Creative</h6>
-                                </div>
-                                <!--end slide-->
-                                <div class="slide mb-5">
-                                    <p class="ts-h5">
-                                        Nam egestas porta posuere. Nunc velit lorem, vestibulum vitae massa nec, lacinia dictum
-                                        ligula. Quisque scelerisque nec dolor id convallis. Vestibulum porta ipsum pretium
-                                        turpis rhoncus, non fringilla ipsum mattis.
-                                    </p>
-                                    <div class="ts-circle__lg mb-3" data-bg-image="assets/img/person-02.jpg"></div>
-                                    <h5>John Brown</h5>
-                                    <h6 class="ts-opacity__40">ABC Architects</h6>
-                                </div>
-                                <!--end slide-->
-                            </div>
-                            <!--end owl-carousel-->
-                        </div>
-                        <!--end col-md-8-->
-                    </div>
-                    <!--end row-->
-                </div>
+    <div
+      :style="{
+        'background-image':
+          'url(' + require('@/assets/images/images/slider-bg.png') + ')',
+      }"
+      class="slide-react"
+    >
+      <Slider
+        ref="Slider"
+        direction="horizontal"
+        :mousewheel-control="true"
+        :performance-mode="true"
+        :pagination-visible="true"
+        :pagination-clickable="true"
+        :loop="true"
+        :speed="500"
+        @slide-change-start="onSlideChangeStart"
+        @slide-change-end="onSlideChangeEnd"
+      >
+        <div class="element-slider">
+          <img src="@/assets/images/images/Shape 5 copy 2.png">
+        </div>
+        <div class="element-slider">
+          <img src="@/assets/images/images/Shape 5 copy 2.png">
+        </div>
+        <div class="element-slider">
+          <img src="@/assets/images/images/Shape 5 copy 2.png">
+        </div>
+        <div class="element-slider">
+          <img src="@/assets/images/images/Shape 5 copy 2.png">
+        </div>
+      </Slider>
+    </div>
   </section>
-  
+
   <!-- Pricing End -->
 </template>

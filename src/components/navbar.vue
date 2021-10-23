@@ -4,33 +4,33 @@ import {
   TwitterIcon,
   InstagramIcon,
   LinkedinIcon,
-  ArrowRightCircleIcon
+  ArrowRightCircleIcon,
 } from "vue-feather-icons";
 
 export default {
   props: {
     navbarcolor: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   components: {
     FacebookIcon,
     TwitterIcon,
     InstagramIcon,
     LinkedinIcon,
-    ArrowRightCircleIcon
+    ArrowRightCircleIcon,
   },
+    data: () => ({
+    language:"english",
+  }),
   mounted: () => {
-    window.onscroll = function() {
+    window.onscroll = function () {
       onwindowScroll();
     };
     var navbar = document.getElementById("navbar");
     function onwindowScroll() {
-      if (
-        document.body.scrollTop > 50 ||
-        document.documentElement.scrollTop > 50
-      ) {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
         navbar.classList.add("nav-sticky");
       } else {
         navbar.classList.remove("nav-sticky");
@@ -38,38 +38,70 @@ export default {
     }
   },
   methods: {
-    /**
+    ToEnglish(){
+      this.language="english";
+    },
+    ToSpanish(){
+      this.language="spanish";
+    },
+        /**
      * Toggle menu
      */
     toggleMenu() {
       document.getElementById("navbarCollapse").classList.toggle("show");
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
-.navbar-collapse{
-  flex-grow:0;
+.navbar-collapse {
+  flex-grow: 0;
 }
-.nav-link
-{
-  font-size:16px !important;
-  color:white !important;
+.nav-link {
+  font-size: 13.46px !important;
+  color: white !important;
 }
-.back_query{
+.logo-dark {
+  width: 49px;
+  height: 44px;
 }
-.logo-dark{
-  width:224px;
-  height:54px;
+.logo {
+  display: flex;
+  align-items: center;
 }
-.wrapper{
-    width: 1400px;
-    margin: 0 auto;
+.wrapper {
+  width: 1400px;
+  margin: 0 auto;
 }
-@media (min-width: 1200px)
-<style>
-.container, .container-sm, .container-md, .container-lg, .container-xl {
-    max-width: 1400px !important;
+.fav-title {
+  font-size: 35.91px;
+  color: white;
+  font-family: Aller_Rg;
+  padding-left: 10px;
+}
+.back_query {
+  background-color: #ed503e !important;
+  border-radius: 10px;
+  padding-right: 15px;
+}
+.navbar {
+  display: block;
+}
+.switch-language {
+  display: flex;
+  justify-content: right !important;
+  display:none;
+}
+.language-title{
+  color: white;
+  font-size: 12px;
+  margin-right:15px;
+  margin-left:15px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.active-language{
+  border-bottom:3px solid #32B0CA;
 }
 </style>
 <template>
@@ -77,12 +109,14 @@ export default {
   <nav
     class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark"
     id="navbar"
-    :class="{'navbar-light': navbarcolor === true}"
+    :class="{ 'navbar-light': navbarcolor === true }"
   >
+    <div class="row container-fluid switch-language"><a class="language-title " @click="ToEnglish" :class="language == 'english' ? 'active-language' : ''">ENGLISH</a> | <a class="language-title" @click="ToSpanish" :class="language == 'spanish' ? 'active-language' : ''">Español</a></div>
     <div class="container-fluid">
       <!-- LOGO -->
       <a class="navbar-brand logo" href="/">
-        <img src="@/assets/images/images/Vector Smart Object.png" alt class="logo-dark" height="24" />
+        <img src="@/assets/images/images/fav.png" alt class="logo-dark" />
+        <span class="fav-title">Forums</span>
       </a>
       <button
         class="navbar-toggler"
@@ -95,28 +129,33 @@ export default {
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mx-auto navbar-center" id="mySidenav" v-scroll-spy-active>
           <li class="nav-item">
-            <a href="javascript: void(0);" v-scroll-to="'#services'" class="nav-link">WHO WE ARE</a>
+            <a href="javascript: void(0);" v-scroll-to="{ el: '#services', offset: -1 }" class="nav-link"
+              >WHO WE ARE</a
+            >
           </li>
           <li class="nav-item">
             <a
               href="javascript: void(0);"
-              v-scroll-to="{ el: '#features', offset: -2}"
+              v-scroll-to="{ el: '#features', offset: -2 }"
               class="nav-link"
-            >WHAT WE DO</a>
+              >WHAT WE DO</a
+            >
           </li>
           <li class="nav-item">
             <a
               href="javascript: void(0);"
-              v-scroll-to="{ el:'#pricing', offset: -2}"
+              v-scroll-to="{ el: '#pricing', offset: -3 }"
               class="nav-link"
-            >HOW WE DO IT</a>
+              >HOW WE DO IT</a
+            >
           </li>
-          <li class="nav-item">
+          <li class="nav-item back_query">
             <a
               href="javascript: void(0);"
-              v-scroll-to="{ el:'#contact', offset:-50}"
-              class="nav-link back_query"
-            >CONTACT US</a>
+              v-scroll-to="{ el: '#contact', offset: -4 }"
+              class="nav-link"
+              >CONTACT US</a
+            >
           </li>
         </ul>
       </div>
@@ -124,4 +163,3 @@ export default {
   </nav>
   <!-- Navbar End -->
 </template>
-
